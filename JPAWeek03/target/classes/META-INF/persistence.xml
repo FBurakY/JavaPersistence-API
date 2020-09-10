@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+version="2.1">
+
+	<persistence-unit name="EmployeePersistenceUnit"
+		transaction-type="RESOURCE_LOCAL">
+	
+		<class>entity.Employee</class>
+		<class>entity.Department</class>
+		<class>entity.ParkingSpace</class>
+		<class>entity.Phone</class>
+		<class>entity.Project</class>
+		<class>entity.Company</class>
+
+		<properties>				
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa.schema?serverTimezone=UTC" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="941304f" />
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+		<!-- 
+		http://www.eclipse.org/eclipselink/api/2.6/index.html?org/eclipse/persistence/config/PersistenceUnitProperties.html
+							
+			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+			<property name="javax.persistence.jdbc.user" value="FadilBurak" />
+			<property name="javax.persistence.jdbc.password" value="941304f" />				
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.logging.level" value="OFF" />
+		-->		
+		</properties>
+		
+	</persistence-unit>
+	
+		<persistence-unit name="EmployeePersistenceUnitForHibernate"
+		transaction-type="RESOURCE_LOCAL">
+		
+		<!-- Hibernate JPA implemantasyonu icin provider eklenmesi GEREKLIDIR! 
+		class tag'ina gerek YOKTUR!
+		
+		varsayilan provider; 
+		org.eclipse.persistence.jpa.PersistenceProvider
+		-->
+		<!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
+		
+		<properties>								
+     		<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa.schema" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="123456" />									
+			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			<property name="hibernate.id.new_generator_mappings" value="true"/>					
+		</properties>
+		
+	</persistence-unit>
+
+</persistence>
